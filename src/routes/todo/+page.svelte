@@ -6,7 +6,6 @@
 		Card,
 		Checkbox,
 		Input,
-		Label,
 		Listgroup,
 		ListgroupItem
 	} from 'flowbite-svelte';
@@ -46,16 +45,14 @@
 		Simple Todo list
 	</h5>
 	<form on:submit|preventDefault>
-		<Label id="todo-input">Enter an item</Label>
-		<ButtonGroup class="w-full mb-14">
-			<Input id="todo-input" bind:value={inputValue} />
+		<ButtonGroup class="w-full mb-10">
+			<Input placeholder="Enter an item" bind:value={inputValue} />
 			<Button type='submit' color="blue" on:click={addItem}>Add</Button>
 		</ButtonGroup>
 	</form>
 	{#if list.length > 0}
 		<Listgroup class="mb-5">
 			{#each list as item (item.id)}
-				<div>
 					<ListgroupItem>
 						<Checkbox on:click={() => addToSelected(item)}>
 							<span class="ml-2" class:checked={selectedItems.find((i) => i.id === item.id)}
@@ -63,11 +60,10 @@
 							>
 						</Checkbox>
 					</ListgroupItem>
-				</div>
 			{/each}
 		</Listgroup>
 	{/if}
-	<div class="grid grid-cols-2 gap-4 place-content-around">
+	<div class="grid grid-cols-1 gap-4 place-content-around">
 		<div class="contents">
 			<Button disabled={!(selectedItems.length > 0)} color="red" on:click={removeSelectedItems}>
 				<svg
@@ -87,7 +83,7 @@
 				> Remove checked
 			</Button>
 		</div>
-		<div class="contents">
+		<!-- <div class="contents">
 			<Button disabled={true} color="dark">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +101,7 @@
 					/></svg
 				>Edit item
 			</Button>
-		</div>
+		</div> -->
 	</div>
 </Card>
 

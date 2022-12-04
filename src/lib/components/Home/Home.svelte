@@ -1,7 +1,11 @@
 <script lang="ts">
-   const demo = 'This is my home component!';
+	import { Card } from 'flowbite-svelte';
+
+	const demo = 'This is my home component!';
 </script>
 
 <template>
-   {demo}
+	<Card class="m-auto">
+		{demo}
+	</Card>
 </template>
