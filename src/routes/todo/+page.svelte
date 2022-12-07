@@ -10,7 +10,12 @@
 		ListgroupItem
 	} from 'flowbite-svelte';
 
-	let list: { id: Symbol; name: string }[] = [];
+	let list: { id: Symbol; name: string }[] = [
+      {
+      id: Symbol(),
+      name: 'Perferendis odit autem dolor eos'
+   }
+];
 	let selectedItems: { id: Symbol; name: string }[] = [];
 
 	let inputValue = '';
@@ -53,7 +58,7 @@
 	{#if list.length > 0}
 		<Listgroup class="mb-5">
 			{#each list as item (item.id)}
-					<ListgroupItem>
+					<ListgroupItem class="grid grid-cols-2">
 						<Checkbox on:click={() => addToSelected(item)}>
 							<span class="ml-2" class:checked={selectedItems.find((i) => i.id === item.id)}
 								>{item.name}</span
